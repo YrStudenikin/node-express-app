@@ -85,7 +85,7 @@ export class AuthController {
     }
   }
 
-  //TODO должен быть в другом месте
+  //TODO тест ручки (отдает список всех пользователей)
   public async getUsers(
     req: Request<object, object>,
     res: Response,

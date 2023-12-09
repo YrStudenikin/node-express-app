@@ -26,6 +26,7 @@ class AuthRoutes {
     this.router.post('/logout', authController.logout);
     this.router.post('/refresh', authController.refresh);
 
+    //тест ручки (отдает пользователей с базы)
     this.router.get(
       '/users',
       authMiddleware.verifyUser,

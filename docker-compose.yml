@@ -6,20 +6,20 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
-      MONGO_INITDB_DATABASE: ${MONGODB_DATABASE_NAME}
+      MONGO_INITDB_DATABASE: ${MONGODB_NAME}
     env_file:
       - .env
     volumes:
-      - mongo:/data/db
+      - mongodb:/data/db
     ports:
       - '6000:27017'
-  redis:
-    image: redis:latest
-    container_name: redis
+
+  app:
+    build: .
     ports:
-      - '6379:6379'
-    volumes:
-      - redis:/data
+      - '8000:8000'
+    depends_on:
+      - mongo
+
 volumes:
-  mongo:
-  redis:
+  mongodb:

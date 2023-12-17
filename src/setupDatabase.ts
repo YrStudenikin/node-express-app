@@ -1,14 +1,19 @@
 import mongoose from 'mongoose';
 import config from 'config';
 
-const dbUrl = `mongodb://${config.get('dbName')}:${config.get(
-  'dbPass',
-)}@localhost:6000/jwtAuth?authSource=admin`;
+const dbUri = [
+    'mongodb://',
+    `${config.get('dbUserName')}:`,
+    `${config.get('dbPass')}@`,
+    `${config.get('dbHost')}:`,
+    `${config.get('dbPort')}/`,
+    `${config.get('dbName')}?authSource=admin`
+].join('')
 
 export default () => {
   const connect = () => {
     mongoose
-      .connect(dbUrl)
+      .connect(dbUri)
       .then(() => {
         console.log('Successfully connected to database');
       })

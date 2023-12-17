@@ -3,6 +3,7 @@
   "author": "Studenikin Yaroslav",
   "scripts": {
     "start": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only src/app.ts",
+    "start:docker": "docker-compose up -d",
     "build": "tsc",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix"

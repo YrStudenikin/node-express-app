@@ -2,12 +2,12 @@
 require('dotenv').config();
 import express, { Express } from 'express';
 
-import databaseConnection from './setupDatabase';
+import setupDatabase from './setupDatabase';
 import { AppServer } from './setupServer';
 
 class Application {
   public init(): void {
-    databaseConnection();
+    setupDatabase();
 
     const app: Express = express();
     const server: AppServer = new AppServer(app);

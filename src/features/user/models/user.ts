@@ -18,7 +18,6 @@ import { compare, hash } from 'bcryptjs';
 })
 @modelOptions({
   schemaOptions: {
-    // Add createdAt and updatedAt fields
     timestamps: true,
   },
 })

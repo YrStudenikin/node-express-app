@@ -10,15 +10,15 @@ const dbUri = [
     `${config.get('dbName')}?authSource=admin`
 ].join('')
 
-export default () => {
+const setupDatabase = () => {
   const connect = () => {
     mongoose
       .connect(dbUri)
       .then(() => {
-        console.log('Successfully connected to database');
+        console.log('Успешное подключение к базе данных');
       })
       .catch((error) => {
-        console.log('Error connecting to database', error);
+        console.log('Ошибка подключения к базе данных', error);
 
         return process.exit(1);
       });
@@ -27,3 +27,5 @@ export default () => {
   connect();
   mongoose.connection.on('disconnected', () => setTimeout(connect, 5000));
 };
+
+export default setupDatabase

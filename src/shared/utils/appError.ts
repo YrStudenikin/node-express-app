@@ -6,7 +6,7 @@ export interface AppErrorResponse {
   statusCode: number;
   status: string;
 
-  serializeErrors(): AppError;
+  formatErrors(): AppError;
 }
 
 interface ErrorItem {
@@ -32,7 +32,7 @@ export abstract class CustomError extends Error {
     this.errors = errors ?? [];
   }
 
-  serializeErrors(): AppError {
+  formatErrors(): AppError {
     return {
       message: this.message,
       status: this.status,

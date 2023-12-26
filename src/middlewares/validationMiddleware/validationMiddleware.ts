@@ -1,6 +1,6 @@
 import { AnyZodObject, ZodError } from 'zod';
 import { NextFunction, Request, Response } from 'express';
-import { ZodRequestValidationError } from '@app/shared';
+import { ZodRequestValidationError } from 'src/shared';
 
 export class ValidationMiddleware {
   public validate(schema: AnyZodObject) {

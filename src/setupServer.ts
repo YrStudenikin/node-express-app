@@ -49,9 +49,9 @@ export class AppServer {
     this.app.use(cookieParser());
 
     if (process.env.NODE_ENV === 'development') {
+      //логирование всех запросов в консоли
       this.app.use(morgan('dev'));
     }
-    // app.use(urlencoded({ extended: true, limit: '1mb' }));
   }
 
   private globalErrorHandler(): void {
@@ -69,7 +69,7 @@ export class AppServer {
         next: NextFunction,
       ) => {
         if (error instanceof CustomError) {
-          return res.status(error.statusCode).json(error.serializeErrors());
+          return res.status(error.statusCode).json(error.formatErrors());
         }
 
         next(error);
@@ -82,7 +82,7 @@ export class AppServer {
       const httpServer: http.Server = new http.Server(this.app);
 
       httpServer.listen(SERVER_PORT, () => {
-        console.log(`Server running on port ${SERVER_PORT}`);
+        console.log(`Сервер запущен: порт ${SERVER_PORT}`);
       });
     } catch (error) {
       console.log(error);
